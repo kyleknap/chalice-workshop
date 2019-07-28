@@ -4,7 +4,14 @@
   "stages": {
     "dev": {
       "api_gateway_stage": "api",
-      "autogen_policy": false
+      "autogen_policy": false,
+      "environment_variables": {
+          "MEDIA_BUCKET_NAME": "${aws_s3_bucket.media_bucket.bucket}",
+          "MEDIA_TABLE_NAME": "${aws_dynamodb_table.media_table.name}",
+          "VIDEO_TOPIC_ARN": "${aws_sns_topic.video_topic.arn}",
+          "VIDEO_TOPIC_NAME": "${aws_sns_topic.video_topic.name}",
+          "VIDEO_ROLE_ARN": "${aws_iam_role.media_role.arn}"
+      }
     }
   }
 }
